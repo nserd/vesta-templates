@@ -102,6 +102,14 @@ function install-debian {
     a2enmod actions cgi
 }
 
+function completion-message {
+    echo
+    echo -e "\e[1mDone\e[0m"
+    echo "To apply the template, run the command:"
+    echo "  v-change-web-domain-tpl admin pol-i-glot.ru phpcgi$VERSION_NAME"
+    echo
+}
+
 check-input $1
 
 if [ `cat /etc/*-release | grep -ic centos` -ne 0 ]
@@ -110,18 +118,21 @@ then
     TEMPLATES_PATH="/usr/local/vesta/data/templates/web/httpd"
 
     install-centos
+    completion-message
 elif [ `cat /etc/*-release | grep -ic ubuntu` -ne 0 ] 
 then
     PHP_CGI="php-cgi$VERSION"
     TEMPLATES_PATH="/usr/local/vesta/data/templates/web/apache2"
 
     install-ubuntu
+    completion-message
 elif [ `cat /etc/*-release | grep -ic debian` -ne 0 ] 
 then
     PHP_CGI="php-cgi$VERSION"
     TEMPLATES_PATH="/usr/local/vesta/data/templates/web/apache2"
 
     install-debian
+    completion-message
 else
     echo "Distribution is not supported. Exit."
 fi
