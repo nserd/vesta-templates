@@ -106,7 +106,7 @@ function completion-message {
     echo
     echo -e "\e[1mDone\e[0m"
     echo "To apply the template, run the command:"
-    echo "  v-change-web-domain-tpl admin pol-i-glot.ru phpcgi$VERSION_NAME"
+    echo "  v-change-web-domain-tpl admin <domain> phpcgi$VERSION_NAME"
     echo
 }
 
